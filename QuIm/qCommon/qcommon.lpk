@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="4">
+    <Name Value="qCommon"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <SearchPaths>
+        <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+      </SearchPaths>
+      <Other>
+        <CompilerMessages>
+          <MsgFileName Value=""/>
+        </CompilerMessages>
+        <CompilerPath Value="$(CompPath)"/>
+      </Other>
+    </CompilerOptions>
+    <Description Value="Paquete de funciones recopiladas."/>
+    <Version Major="1"/>
+    <Files Count="5">
+      <Item1>
+        <Filename Value="qLibString.pas"/>
+        <UnitName Value="qLibString"/>
+      </Item1>
+      <Item2>
+        <Filename Value="qLibDB.pas"/>
+        <UnitName Value="qLibDB"/>
+      </Item2>
+      <Item3>
+        <Filename Value="qLibMisc.pas"/>
+        <UnitName Value="qLibMisc"/>
+      </Item3>
+      <Item4>
+        <Filename Value="qLibComm.pas"/>
+        <UnitName Value="qLibComm"/>
+      </Item4>
+      <Item5>
+        <Filename Value="qLibSystem.pas"/>
+        <UnitName Value="qLibSystem"/>
+      </Item5>
+    </Files>
+    <LazDoc Paths="/home/quim/Librerias/Lazarus/Packages/QuIm/qCommon"/>
+    <Type Value="RunTimeOnly"/>
+    <RequiredPkgs Count="1">
+      <Item1>
+        <PackageName Value="LCL"/>
+      </Item1>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

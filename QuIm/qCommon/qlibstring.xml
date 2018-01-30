@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fpdoc-descriptions>
+  <package name="qCommon">
+    <module name="qLibString">
+      <short>Funciones que manipulan cadenas</short>
+      <descr>
+        <p>
+          <b>StrToStrDec</b>: Convierte un string que contiene un valor FLOAT a otro string con el número de decimales indicado. Opcionalmente puede redondear el último decimal.</p>
+        <p>-</p>
+        <p>
+          <b>HashStr</b>: Retorna el HASH MD5 del string pasado.</p>
+      </descr>
+      <element name="StrToStrDec">
+        <short>Convierte un string que contiene un valor FLOAT a otro string con el número de decimales indicado. Opcionalmente puede redondear el último decimal.</short>
+        <descr>
+          <p>ENTRADA
+  </p>
+          <p>
+            <b>str</b>: Contiene el número a convertir.</p>
+          <p>
+            <b>nDec</b>: Nº de decimales a conservar.</p>
+          <p>
+            <b>truncar</b>: FALSE si se redondea el último decimal. Por defecto es TRUE.</p>
+          <p>-</p>
+          <p>SALIDA
+  </p>
+Cadena que contiene el número con los decimales pedidos.</descr>
+      </element>
+      <element name="HashStr">
+        <short>Retorna el HASH MD5 de la cadena de entrada.</short>
+        <descr>
+          <p>ENTRADA</p>
+          <p>
+            <b>str</b>: Cadena de la que se extraerá el HASH</p>
+          <p>-</p>
+          <p>SALIDA</p>
+          <p>HASH MD5 de la cadena de entrada</p>
+        </descr>
+      </element>
+    </module>
+    <short>Funciones y código recopilado.</short>
+  </package>
+</fpdoc-descriptions>

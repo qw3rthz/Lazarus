@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<CONFIG>
+  <ProjectOptions>
+    <Version Value="7"/>
+    <General>
+      <Flags>
+        <LRSInOutputDirectory Value="False"/>
+      </Flags>
+      <MainUnit Value="0"/>
+      <TargetFileExt Value=".exe"/>
+      <ActiveEditorIndexAtStart Value="0"/>
+    </General>
+    <VersionInfo>
+      <ProjectVersion Value=""/>
+      <Language Value=""/>
+      <CharSet Value=""/>
+    </VersionInfo>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IgnoreBinaries Value="False"/>
+      <IncludeFileFilter Value="*.(pas|pp|inc|lfm|lpr|lrs|lpi|lpk|sh|xml)"/>
+      <ExcludeFileFilter Value="*.(bak|ppu|ppw|o|so);*~;backup"/>
+    </PublishOptions>
+    <RunParams>
+      <local>
+        <FormatVersion Value="1"/>
+        <LaunchingApplication PathPlusParams="/usr/X11R6/bin/xterm -T 'Lazarus Run Output' -e $(LazarusDir)/tools/runwait.sh $(TargetCmdLine)"/>
+      </local>
+    </RunParams>
+    <RequiredPackages Count="3">
+      <Item1>
+        <PackageName Value="FCL"/>
+        <MinVersion Major="1" Valid="True"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="LCL"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="rxnew"/>
+        <MinVersion Major="1" Release="18" Build="56" Valid="True"/>
+      </Item3>
+    </RequiredPackages>
+    <Units Count="10">
+      <Unit0>
+        <Filename Value="RxDBGridDemo.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="RxDBGridDemo"/>
+        <CursorPos X="3" Y="11"/>
+        <TopLine Value="1"/>
+        <UsageCount Value="24"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="rxdbgridmainunit.pas"/>
+        <ComponentName Value="RxDBGridMainForm"/>
+        <IsPartOfProject Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="RxDBGridMainUnit"/>
+        <CursorPos X="24" Y="53"/>
+        <TopLine Value="127"/>
+        <EditorIndex Value="0"/>
+        <UsageCount Value="24"/>
+        <Loaded Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="../../../../fpcsrc/fcl/db/db.pp"/>
+        <UnitName Value="db"/>
+        <CursorPos X="17" Y="1116"/>
+        <TopLine Value="1112"/>
+        <UsageCount Value="10"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="../../../../fpcsrc/fcl/db/dataset.inc"/>
+        <CursorPos X="21" Y="1139"/>
+        <TopLine Value="1134"/>
+        <UsageCount Value="10"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="../../rxmemds.pas"/>
+        <UnitName Value="rxmemds"/>
+        <CursorPos X="1" Y="356"/>
+        <TopLine Value="337"/>
+        <UsageCount Value="10"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="../../rxdbgrid.pas"/>
+        <UnitName Value="rxdbgrid"/>
+        <CursorPos X="13" Y="626"/>
+        <TopLine Value="608"/>
+        <UsageCount Value="12"/>
+        <Bookmarks Count="1">
+          <Item0 X="3" Y="1444" ID="1"/>
+        </Bookmarks>
+      </Unit5>
+      <Unit6>
+        <Filename Value="../../../../lcl/lresources.pp"/>
+        <UnitName Value="LResources"/>
+        <CursorPos X="1" Y="2644"/>
+        <TopLine Value="2626"/>
+        <UsageCount Value="10"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="../../../../lcl/grids.pas"/>
+        <UnitName Value="Grids"/>
+        <CursorPos X="60" Y="68"/>
+        <TopLine Value="58"/>
+        <UsageCount Value="10"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="../../../../lcl/dbgrids.pas"/>
+        <UnitName Value="DBGrids"/>
+        <CursorPos X="14" Y="455"/>
+        <TopLine Value="437"/>
+        <UsageCount Value="11"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="../../rxpopupunit.pas"/>
+        <UnitName Value="rxpopupunit"/>
+        <CursorPos X="15" Y="249"/>
+        <TopLine Value="246"/>
+        <EditorIndex Value="1"/>
+        <UsageCount Value="11"/>
+        <Loaded Value="True"/>
+      </Unit9>
+    </Units>
+    <JumpHistory Count="2" HistoryIndex="1">
+      <Position1>
+        <Filename Value="rxdbgridmainunit.pas"/>
+        <Caret Line="52" Column="18" TopLine="9"/>
+      </Position1>
+      <Position2>
+        <Filename Value="rxdbgridmainunit.pas"/>
+        <Caret Line="15" Column="4" TopLine="9"/>
+      </Position2>
+    </JumpHistory>
+  </ProjectOptions>
+  <CompilerOptions>
+    <Version Value="8"/>
+    <SearchPaths>
+      <SrcPath Value="$(LazarusDir)/lcl/;$(LazarusDir)/lcl/interfaces/$(LCLWidgetType)/"/>
+    </SearchPaths>
+    <Linking>
+      <Options>
+        <Win32>
+          <GraphicApplication Value="True"/>
+        </Win32>
+      </Options>
+    </Linking>
+    <Other>
+      <CompilerPath Value="$(CompPath)"/>
+    </Other>
+  </CompilerOptions>
+  <Debugging>
+    <Watches Count="1">
+      <Item1>
+        <Expression Value="W"/>
+      </Item1>
+    </Watches>
+  </Debugging>
+</CONFIG>

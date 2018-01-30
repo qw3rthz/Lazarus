@@ -1,0 +1,62 @@
+object fMain: TfMain
+  Left = 414
+  Height = 323
+  Top = 276
+  Width = 487
+  ActiveControl = Panel1
+  Caption = 'JanSpeller Demo'
+  ClientHeight = 323
+  ClientWidth = 487
+  OnCreate = FormCreate
+  LCLVersion = '0.9.29'
+  object StatusBar1: TStatusBar
+    Left = 0
+    Height = 21
+    Top = 302
+    Width = 487
+    Panels = <>
+  end
+  object Panel1: TPanel
+    Left = 0
+    Height = 50
+    Top = 0
+    Width = 487
+    Align = alTop
+    ClientHeight = 50
+    ClientWidth = 487
+    TabOrder = 1
+    object btnOpen: TButton
+      Left = 11
+      Height = 25
+      Top = 13
+      Width = 75
+      Caption = 'Open File'
+      OnClick = btnOpenClick
+      TabOrder = 0
+    end
+    object btnSpell: TButton
+      Left = 99
+      Height = 25
+      Top = 13
+      Width = 99
+      Caption = 'Spell Check'
+      OnClick = btnSpellClick
+      TabOrder = 1
+    end
+  end
+  object Memo1: TMemo
+    Left = 0
+    Height = 252
+    Top = 50
+    Width = 487
+    Align = alClient
+    TabOrder = 2
+  end
+  object OpenDlg: TOpenDialog
+    Filter = 'Text Files|*.txt|All Files|*.*'
+    left = 252
+  end
+  object Speller: TjanSpeller
+    left = 327
+  end
+end

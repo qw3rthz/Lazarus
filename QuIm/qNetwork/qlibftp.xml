@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="qNetwork"><module name="qLibFTP"><short>Funciones para el protocolo FTP</short><descr><p>Estas funciones son útiles en los entornos FTP de los que se tiene el control de la estructura, ya que no proporcionan herramientas de listado.</p>
+      </descr>
+    </module>
+  </package>
+</fpdoc-descriptions>

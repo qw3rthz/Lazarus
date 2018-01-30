@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="qCommon"><module name="qLibDB"><short>Funciones de base de datos</short><descr>SQLiteLib: Busca en el sistema la libreria de SQLite.</descr><element name="SQLiteLib"><descr><p>ENTRADA</p><p>-</p><p>SALIDA</p><p>Ruta y nombre de la libreria para SQLite 3. Si no existe devuelve la cadena vacia.</p>
+        </descr><short>Busca en el sistema la libreria de SQLite.</short>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>

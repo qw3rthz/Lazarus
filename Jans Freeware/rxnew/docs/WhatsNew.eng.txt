@@ -1,0 +1,138 @@
+  + Keys PgUp/PgDn correctly go through previous/next month in TRxCalendarGrid and TRxDateEdit
+  + if try edit closed TRxMemoryData in error message display TRxMemoryData.Name
+  + fix create resource from XPM image
+  + draw shadow on button image in TToolPanel
+  - Fix error in TDBComboBox.EditingDone if DataSet = nil
+  - new code for align button on TToolPanel
+  + property OnUTF8KeyPress now published
+  + New value for ToolPanel.ToolBarStyle - tbsNative - for draw buttons used standart theme from OS
+  + fix options dialog for TToolPanel
+  + In TRxDateEdit add new property - ValidDate. Check valid input.
+  + add 2 component from original RX:  TRxSpinButton ╔ TRxSpinEdit (Edward Ivanov)
+  - fix images for TRxClock, TRxDateEdit, TAutoPanel (Edward Ivanov)
+22.05.2008 - version 2.0.0.136 (svn revision 100)
+  + In TRxCustomDBLookupCombo add check for CircularDataLink
+  + in TRxCustomDBLookupCombo accelerated drawing data
+  - In TRxCustomDBLookupCombo fix select first record if DataField is emty
+  + In RxDBGrid are published missing events from DBGrid
+  + New component TRxCalendarGrid - simple calendar without heading.
+  - fix error compile module rxappicon.pas in Windows  for GTK2 (thx ViruZ)
+  + add new module rxiconv.pas (original module iconv.pas from A.Voito)
+  + minor fix in drawing button caption in setup form TToolbar
+  + fix draw disables state for TRxCustomDBLookupCombo
+  - fix compile rxctrls in fpc 2.2
+  + TPopUpColumnTitle used define NEW_STYLE_TITLE_ALIGNMENT_RXDBGRID
+  + in RxDBGrid images of markers moved to rxdbgrids.lrs (Petr Smolik)
+  + add module for autosort in RxDBGrid exsortzeos.pas for ZeosDB (Petr Smolik)
+  - In TCurrencyEdit property BorderSpacing now published
+  + New procedure  StrToStrings in module rxstrutils - fill List:TStrings 
+      procedure StrToStrings(const S:string; const List:TStrings; const Delims:Char);
+  + New editor for TField object with Lookup source in TRxDBGrid - base on class TRxDBLookupCombo
+  + In TRxDBLookupCombo work property AutoSize
+  + After change property Font in TRxDBLookupCombo dropdown list used this font
+  + In RxDBGrid create lookup editor for TField 
+  - Fix error in TRxLookupEdit 
+  + In RxDBGrid published new property from DBGrid
+  + Cosmetic fix in paint TRxCustomDBLookupCombo
+  + Dropdown list in TRxCustomDBLookupCombo show after clikc on component
+  + minor fix in RxDBGrid paint sort marker and column title
+  + New component - TRxDateEdit
+  + In RxDBGrid create editor for field with type ftDate, ftDateTime - based on TRxDateEdit
+    (see Demos/RxDBGrid)
+  - minor fix in filter combobox in RxDBGrid for GTK and GTK2
+  + TRxSpeedButton and TRxClock
+  + new procedure in module dbutils -  FillValueForField
+  + editor for property TRxColumnFooter.FieldName
+  + TDBDateEdit inherited from TRxDateEdit, for old style use DBDateEdit_OLD compiller directive
+    (see rx.inc). 
+  + In RxDBGrid property FixedHotColor now published
+  - fix error with empty sring in TRxDateEdit.
+  + In property  TRxDBLookupCombo.PopUpFormOptions add field  AutoFillColumns. Used in dropdown list.
+  - Cleanup code in  TRxDBLookupCombo.Paint
+  + In TRxDBLookupCombo property DropDownCount now work
+  - fix error in TRxDBLookupCombo after set value for DataField and LookupSourse.Active=false
+  + In PopUpFormOptions add editor for property Collumns[x].FieldName
+29.08.2007 - version 1.1.5.98 (svn revision 39)
+  + In RxDBgrid - after close dataset  list of SelectedRows is cleared
+  + fix resaizing find form for RxDbGrd    
+  + compile in latest Lazarus
+  + in TToolbarButton stile tbrSeparator and tbrDivider as Delphi
+    tbrSeparator - separator with line
+    tbrDivider - empty separator 
+  + in TToolbarButton new style tbrDropDownExtra - button with dropdown menu.
+12.08.2007 - version 1.1.4.93
+  + in TRxDBComboBox publishe any property
+  + in TRxDBLookupCombo add event OnGetGridCellProps
+  + in rx.inc new define
+    RXDBGRID_OPTIONS_WO_CANCEL_ON_EXIT
+  - in RxDBGrid fix error lose focuse after close filte list
+  + in demo for RxDBGrid add demos дfor visual filtring data
+  + add new component - TAutoPanel ( Dmitry V. Bolshakov) - 
+    doc ifn folder auto_panel_doc
+  + in property OptionsRX add new flag - rdgMrOkOnDblClik
+25.06.2007 - version 1.1.3.86
+  - fix error in TRxMemoryData.SortOnFields
+  + add sorting in RxDBGrid for TRxMemoryData 
+    - use module rxsortmemds
+  + In RxDBGrid add procedure UpdateTitleHight - direc recalc title hight
+  - fix error RxDBGrid on press on last collumn title
+  + in RxDBGrid в заголовке введена специальная обработка символа | - это
+    считается безусловный разделитель строк
+  + В RxDBGrid.OptionsRx добавлен флаг rdgMultiTitleLines - 
+    при наличии в заголовке символа | между строками рисуется разделительная 
+    линия
+  + В rx.inc ввёл новую дерективукомпиляции 
+    NEW_STYLE_TITLE_ALIGNMENT_RXDBGRID
+    если она определна, то при создании новых колонок в RxDBGrid заголовок центрируется,
+    если эта деректива не определена - то поведение заголовка стандартное - выравнивается 
+    по левому краю
+  + in TRxDBLookupCombo если в свойстве PopUpFormOptions заданы колонки то при отрисовке данных
+    в строке используется ширина, указанная в колонках
+  + in TRxDBLookupCombo after close popup window saved width of collumn
+31.05.2007 - version 1.1.2.77
+  - fix compile error in rxtoolbar.pas - TToolPanel not work this theme manager :-(
+  - fix compile error in rxlogin.pas - error in SetCursor
+15.05.2007 - version 1.1.1.75
+  + in RxDBGrid add procedure OptimizeColumnsWidth(AColList:String) - calc width of
+    column
+  + in RxDBGrid add procedure OptimizeColumnsWidthAll - calc width for all columns
+  + in TRxColumn add procedure OptimizeWidth - calc width of column
+  + option rdgDblClickOptimizeColWidth in RxDBGrid.OptionsRx now work
+  - fix calc height title column for for RxDBGrid 
+  - fix open demo for RxDBGrid
+  + in demo for RxDBGrid add code for OptimizeWidth procedure
+28.03.2007 - version 1.1.0.68
+  - In RxDBGrid fix draw summary footer line on resize collumns
+  + In RxDBGrid in property OptionsRx add new value rdgXORColSizing
+  - change draw code for footer line (code from Yogrik)
+  + minor fix on reposition button in ToolBar
+  + in TRxDBLookupCombo fix draw dropdown box
+  + in TRxColumnTitle add property Hint and ShowHint 
+  + In TRxDBGrid add filtrenig (code from Yogrik)
+01.11.2006 - version 1.0.19.61
+  + In dropdown box from TRxDBLookupCombo write fast find in collumn on press keys
+  + In RxDBGrid add summary footer line. Warning: not work aggregate function 
+    (SUM, MAX, MIN, AVG) - error in TDataSet 
+  + In TRxMemoryData create method AppendRecord - AppendRecord from TDataSet not work :-(
+  + New demo app - RxDBGrid
+  - In RxDBGrid fix call OnDrawColumnCell
+08.09.2006 - version 1.0.18.56
+  + In component TToolPanel add new property ButtonAllign = (tbaNone, tbaLeft, tbaRignt)
+    default align for button
+  + Object TToolbarItem (button on ToolBar) process type tbrSeparator - 
+    the button appears as an empty space on the toolbar (used to separate other controls).
+  + On close drop down in TRxDBLookupCombo repaint parent of component
+19.08.2006 - version 1.0.17.53
+  + change default style of window frame in TRxDBLookupCombo to bsNone
+  + single mouse click in TRxDBLookupCombo closes it's
+  - fix work ESK key in TRxDBLookupCombo
+  + In RxDBLookupCombo not fire event OnChange
+15.05.2006 - version 1.0.16.49
+  + rewrite dropdown box for component TRxDBLookupCombo
+  + for TRxDBLookupCombo add new property - PopUpFormOptions - all parametrs for
+    dropdown list
+
+
+
+  Lagunov Aleksey (alexs)
+  ALEXS75-at-YANDEX-dot-RU

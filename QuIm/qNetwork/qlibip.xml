@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="qNetwork"><module name="qLibIP"><short>Funciones de soporte de direccionamiento IP</short><descr><p><b>GetLocalIPs</b>: Retorna las IP locales asignadas al ordenador.</p><p>.</p><p><b>GetPublicIP</b>: Retorna la IP pública por la que se conecta a Internet (si existe).</p>
+      </descr>
+    </module>
+  </package>
+</fpdoc-descriptions>

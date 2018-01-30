@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fpdoc-descriptions>
+  <package name="qCommon">
+    <module name="qLibSystem">
+      <element name="GetProgramVersion">
+        <short>Retorna la versión de la aplicación ejecutable, si existe.</short>
+        <descr>
+          <p>ENTRADA</p>
+          <p>
+            <b>FileName</b>: Ruta y nombre completo del ejecutable.</p>
+          <p>-</p>
+          <p>SALIDA</p>
+          <p>Versión del ejecutable. Cadena vacia si no existe.</p>
+        </descr>
+      </element>
+      <element name="GetThisComputerName">
+        <short>Retorna el nombre del equipo</short>
+      </element>
+      <short>Funciones de aplicación y sistema</short>
+      <descr>GetProgramVersion: Retorna la versión de la aplicación ejecutable, si existe.
+GetThisComputerName: Retorna el nombre del equipo</descr>
+    </module>
+  </package>
+</fpdoc-descriptions>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fpdoc-descriptions><package name="qCommon"><module name="qLibComm"><short>Funciones de comunicaciones</short><descr>GPStoDegrees: Convierte coordenadas terrestres de formato [DD]DMM.mmmmmm a DD.dddddd</descr><element name="GPStoDegrees"><short>Convierte coordenadas terrestres de formato [DD]DMM.mmmmmm a DD.dddddd</short><descr><p>ENTRADA</p><p><b>Coord</b>: Coordenada terrestre (LAT o LON) a convertir, presentada en formato [DD]DMM.mmmmmm</p><p>-</p><p>SALIDA</p><p>Coordenada terrestre (LAT o LON) convertida al formato DD.dddddd</p>
+        </descr>
+      </element>
+    </module>
+  </package>
+</fpdoc-descriptions>
