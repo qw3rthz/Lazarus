@@ -1,0 +1,123 @@
+http://forum.lazarus.freepascal.org/index.php/topic,31936.msg205336.html#msg205336
+
+    // wildcard and characterset support: *, ? [az] [^az] [a-z] [^a-z]
+    function _MatchPattern (aPattern, aSource: PChar): Boolean;
+    var
+      invert_set: boolean;
+    begin
+      Result := True;
+      while (True) do begin
+        case aPattern [0] of
+          #0: begin
+            // End of pattern reached.
+            Result := (aSource [0] = #0); // TRUE if end of aSource.
+            Exit;
+          end;
+    //----
+          '*': Begin // Match zero or more occurances of any char.
+            if (aPattern [1] = #0) then begin
+              // Match any number of trailing chars.
+              Result := True;
+              Exit;
+            end
+            else Inc (aPattern);
+     
+            while (aSource [0] <> #0) do begin
+              // Try to match any substring of aSource.
+              if (_MatchPattern (aPattern, aSource)) then begin
+                Result := True;
+                Exit;
+              end;
+     
+              // Continue testing next char ...
+              Inc (aSource);
+            end;
+          end;
+    //----
+          '?': Begin // Match any one char.
+            if (aSource [0] = #0) then begin
+              Result := False;
+              Exit;
+            end;
+     
+            // Continue testing next char ...
+            Inc (aSource);
+            Inc (aPattern);
+          end;
+    //----
+          '[': Begin // Match given set of chars.
+            if (aPattern [1] in [#0 ,'[',']']) then begin
+              // Invalid Set - So no match.
+              Result := False;
+              Exit;
+            end;
+     
+            invert_set := (aPattern [1] = '^');
+            if (invert_set)
+            then Inc (aPattern, 2)
+            else Inc (aPattern);
+     
+            // Match for inclusion of given set ...
+            Result := False;
+            while (aPattern [0] <> ']') do begin
+              if (aPattern [1] = '-') then begin
+                // Match char inclusion range.
+                if (aSource [0] >= aPattern [0]) and (aSource [0] <= aPattern [2]) then begin
+                  // Given char matched set range inclusion.
+                  // Continue testing ...
+                  Result := True;
+                  Break;
+                end
+                else Inc (aPattern, 3);
+              end
+              else begin
+                // Match individual char inclusion.
+                if (aSource [0] = aPattern [0]) then begin
+                  // Given char matched set element inclusion.
+                  // Continue testing ...
+                  Result := True;
+                  Break;
+                end
+                else Inc (aPattern);
+              end;
+            end;
+     
+            if invert_set
+            then Result := not Result;
+     
+            if (Result) then begin
+              // Match was found. Continue further.
+              Inc (aSource);
+              // Position Pattern to char after "]"
+              while (aPattern [0] <> ']') and (aPattern [0] <> #0) do Inc (aPattern);
+              if (aPattern [0] = #0) then begin
+                // Invalid Pattern - missing "]"
+                Result := False;
+                Exit;
+              end
+              else Inc (aPattern);
+            end
+            else Exit;
+          end;
+    //----
+          else begin // Match given single char.
+            if (aSource [0] <> aPattern [0]) then begin
+              Result := False;
+              Break;
+            end;
+     
+            // Continue testing next char ...
+            Inc (aSource);
+            Inc (aPattern);
+          end;
+        end;
+      end;
+    end;
+     
+    // wildcard and characterset support: *, ? [az] [^az] [a-z] [^a-z]
+    function MatchPattern (const aPattern, aSource: string): Boolean;
+    begin
+      Result := _MatchPattern (PChar (aPattern), PChar (aSource));
+    end;
+     
+      

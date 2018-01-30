@@ -1,0 +1,57 @@
+// Ejecuta un método de un objeto dado su nombre
+// http://delphi.about.com/cs/adptips2004/a/bltip0204_3.htm
+
+unit.....
+
+interface
+
+uses.....
+
+type
+   TForm1 = class(TForm)
+     Button1: TButton;
+     procedure Button1Click(Sender: TObject) ;
+     procedure CallMeByName(Sender: TObject) ;
+   private
+     procedure ExecMethod(OnObject: TObject; MethodName: string) ;
+   end;
+
+var
+   Form1: TForm1;
+
+type
+   TExec = procedure of object;
+
+implementation
+
+.
+.
+.
+
+procedure TForm1.Button1Click(Sender: TObject) ;
+begin
+   ExecMethod(Form1, 'CallMeByName') ;
+end;
+
+procedure TForm1.ExecMethod(OnObject: TObject; MethodName: string) ;
+var
+   Routine: TMethod;
+   Exec: TExec;
+begin
+   Routine.Data := Pointer(OnObject) ;
+   Routine.Code := OnObject.MethodAddress(MethodName) ;
+   if NOT Assigned(Routine.Code) then Exit;
+   Exec := TExec(Routine) ;
+   Exec;
+end;
+
+procedure TForm1.CallMeByName(Sender: TObject) ;
+begin
+   ShowMessage('Hello Delphi!') ;
+end;
+
+.
+.
+.
+
+end.

@@ -1,0 +1,126 @@
+object Form1: TForm1
+  Left = 290
+  Height = 395
+  Top = 77
+  Width = 565
+  Caption = 'Form1'
+  ClientHeight = 395
+  ClientWidth = 565
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  LCLVersion = '1.0.10.0'
+  object DBGrid1: TDBGrid
+    Left = 0
+    Height = 234
+    Top = 30
+    Width = 565
+    Align = alClient
+    AlternateColor = 15790320
+    Color = clWindow
+    Columns = <    
+      item
+        Title.Caption = 'FLD_T1'
+        FieldName = 'FLD_T1'
+      end    
+      item
+        Title.Caption = 'FLD_T2'
+        Width = 150
+        FieldName = 'FLD_T2'
+      end    
+      item
+        Title.Caption = 'FLD_T3'
+        Width = 250
+        FieldName = 'FLD_T3'
+      end>
+    DataSource = Datasource1
+    Flat = True
+    TabOrder = 0
+    OnColumnSized = DBGrid1ColumnSized
+    OnDrawColumnCell = DBGrid1DrawColumnCell
+  end
+  object DBMemo1: TDBMemo
+    Left = 0
+    Height = 131
+    Top = 264
+    Width = 565
+    Align = alBottom
+    DataField = 'FLD_T3'
+    DataSource = Datasource1
+    TabOrder = 1
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 0
+    Height = 30
+    Top = 0
+    Width = 565
+    Align = alTop
+    BevelOuter = bvNone
+    ChildSizing.EnlargeHorizontal = crsScaleChilds
+    ChildSizing.EnlargeVertical = crsScaleChilds
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 100
+    ClientHeight = 30
+    ClientWidth = 565
+    DataSource = Datasource1
+    Options = []
+    TabOrder = 2
+  end
+  object Datasource1: TDatasource
+    DataSet = SQLQuery1
+    left = 54
+    top = 101
+  end
+  object IBConnection1: TIBConnection
+    Connected = True
+    LoginPrompt = False
+    DatabaseName = 'D:\jkoz\Lazarus\Projects\Databases\Firebird\TESTDB.FDB'
+    KeepConnection = False
+    Password = 'masterkey'
+    Transaction = SQLTransaction1
+    UserName = 'sysdba'
+    LogEvents = []
+    left = 224
+    top = 152
+  end
+  object SQLQuery1: TSQLQuery
+    FieldDefs = <    
+      item
+        Name = 'FLD_T1'
+        DataType = ftInteger
+        Precision = -1
+        Size = 0
+      end    
+      item
+        Name = 'FLD_T2'
+        DataType = ftString
+        Precision = -1
+        Size = 80
+      end    
+      item
+        Name = 'FLD_T3'
+        DataType = ftMemo
+        Precision = -1
+        Size = 8
+      end>
+    Database = IBConnection1
+    Transaction = SQLTransaction1
+    SQL.Strings = (
+      'Select * from TBL_TEST'
+    )
+    UpdateSQL.Strings = (
+      ''
+    )
+    Params = <>
+    left = 280
+    top = 80
+  end
+  object SQLTransaction1: TSQLTransaction
+    Active = True
+    Action = caNone
+    Database = IBConnection1
+    left = 344
+    top = 112
+  end
+end

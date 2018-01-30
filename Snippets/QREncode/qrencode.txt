@@ -1,0 +1,13 @@
+Ejemplo de uso:
+
+QRcode:=TQRCode.Create();
+  // set error correction level:
+  QRcode.EcLevel:=QR_ECLEVEL_H;
+  // string, which encode:
+  QRcode.Text:='Testing QR code'
+  // paintv on Canvas:
+  QRcode.Paint(Printer.Canvas, Rect(10,10,100,100));
+  QRcode.Free;
+
+
+http://forum.lazarus.freepascal.org/index.php/topic,26739.msg164608.html#msg164608

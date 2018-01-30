@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+ <TITLE>HTMLParser</TITLE>
+<HEAD>
+
+<BODY BGCOLOR="#FFFFFF">
+
+
+<H1>THTMLParser v1.02</h1>
+THTMLParser is a delphi class to parse a HTML file.
+The file will be split into tags and text
+objects (useful  for validating tags or for automatic code corrections).
+Sample file included (very simple web browser!).
+Supports HTML3.2 entities and Western Latin-1 charset.<BR>
+<br>
+<B>How to use the HTMLParser</B>
+<HR>
+Create an instance of HTMLParser with <br>
+<br>
+<FONT face="Courier">&nbsp;&nbsp;HTMLParser:=THTMLParser.Create;</FONT>
+<br>
+<br>
+then load a HTML file, e.g.<br>
+<br>
+<FONT face="Courier">&nbsp;&nbsp;HTMLParser.Lines.LoadfromFile(filename)</FONT><br>
+<br>
+whereas Lines is a normal TStringlist.<br>
+With<br>
+<br>
+<FONT face="Courier">&nbsp;&nbsp;HTMLParser.Execute;</FONT><br>
+<br>
+the file will be parsed into <FONT face="Courier">HTMLParser.Parsed</FONT> <BR>
+this TList consists of objects derived from 2 classes:<br>
+<br>
+<PRE>
+type THTMLText = class
+ property Line:string;  // HTML3.2 Entities and Western Latin-1 Font converted text
+ property Raw:string;   // raw text line as read from input file
+
+type THTMLTag = class
+ Params:TList; // see below
+ property Name:string; // uppercased TAG 
+ property Raw:string;  // raw TAG (parameters included) as read from input file
+
+ Params is a list of all parameters for the TAG (if any):
+
+   type THTMLParam = class
+    property Key:string;            // Key name
+    property Value:string;          // Value name
+    property Raw:string read fRaw;  // raw parameter line
+
+</PRE>
+
+<B>Example</B>
+<HR>
+The HTML file
+<Font face="courier"><br>
+<br>
+ &lt;html&gt;<br>
+ &lt;BODY LINK="#FF00FF" border=0&gt;<br>
+ Hello You &#38;amp; Co!<br>
+ &lt;/html&gt;<br>
+<br>
+
+</font>
+
+will result in 4 objects (<FONT FACE="Courier">HTMLParser.Parsed.Count=4</FONT>):<BR>
+
+<PRE>
+
+[0] HTMLTag.Name = "HTML"
+           .Params.count = 0
+
+[1] HTMLTag.Name = "BODY"
+           .Params.count = 2
+
+                  [0]  HTMLParam.Key   = "LINK"
+                                .Value = "#FF00FF"
+                  [1]  HTMLParam.Key   = "BORDER"
+                                .Value = "0"
+
+[2] HTMLText.Line = "Hello You & Co!"
+
+[3] HTMLTag.Name = "/HTML"
+           .Params.count = 0
+</PRE>
+<br>
+<B>Comments and Bugs</B>
+<HR>
+Please send any comments or bugs to <A HREF="mailto:dennis@spreendigital.de">
+dennis@spreendigital.de</A>.<BR>
+<BR>
+<B>Known Bugs and Problems</B>
+<HR>
+There are some problems with chars in a hex representation e.g. & #x67.<BR>
+<BR>
+<H1>Important!</H1>
+Please do <B>NOT</B> report any bugs considering this WebBrowser sample!<br>
+This sample is not meant as a full HTML compatible browser, indeed it is
+programmed to show this help file only.
+
+
+<HR WIDTH=500 ALIGN=LEFT SIZE=1 NOSHADE>
+&copy;1999 Dennis D. Spreen<BR>
+
+</HTML>

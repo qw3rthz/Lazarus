@@ -1,0 +1,40 @@
+//http://forum.lazarus.freepascal.org/index.php/topic,32798.msg211644.html#msg211644
+
+
+    function IsSameDevice(PathA, PathB: TDFileName): Boolean;
+    {$IFDEF MSWINDOWS}
+    var
+      AHandle, BHandle: THANDLE;
+      AInfo, BInfo: TByHandleFileInformation;
+    begin
+      AHandle := CreateFileW(PWideChar(UTF8Decode((PathA))), GENERIC_READ, FILE_SHARE_READ,
+            Nil, OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS, 0);
+      BHandle := CreateFileW(PWideChar(UTF8Decode((PathB))), GENERIC_READ, FILE_SHARE_READ,
+            Nil, OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS, 0);
+     
+      try
+        Result := (AHandle <> 0) and (BHandle <> 0) and
+          GetFileInformationByHandle(AHandle, AInfo) and
+          GetFileInformationByHandle(BHandle, BInfo) and
+          (AInfo.dwVolumeSerialNumber = BInfo.dwVolumeSerialNumber) and
+          (AInfo.nFileIndexHigh = BInfo.nFileIndexHigh);
+      finally
+        if AHandle <> 0 then
+          FileClose(AHandle);
+        if BHandle <> 0 then
+          FileClose(BHandle);
+      end;
+    {$ENDIF}
+    {$IFDEF UNIX}
+    var
+      AInfo, BInfo: TStatfs;
+    begin
+      Result :=
+        (fpStatFS(UTF8ToSys(PathA), @AInfo) <> - 1) and
+        (fpStatFS(UTF8ToSys(PathB), @BInfo) <> - 1) and
+        (AInfo.fsid[0] = BInfo.fsid[0]) and
+        (AInfo.fsid[1] = BInfo.fsid[1]);
+    {$ENDIF}
+    end;
+     
+ 

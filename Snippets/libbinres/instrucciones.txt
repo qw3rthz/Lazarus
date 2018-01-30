@@ -1,0 +1,63 @@
+{******************************************************************************
+ USER'S MANUAL:
+
+ Table of content:
+       1. Simplest use
+       2. Formatted output
+       3. Accessing version numbers as integers
+       4. About formatting
+       5. Advanced
+
+
+ 1. Simplest use:
+    (...)
+    uses (...), libBinRes;
+    (...)
+    //something like "1.0.0.0"
+      ShowMessage(libBinRes.AppVersionInfo.VersionStr);
+    (...)
+
+ 2. Formatted output:
+    (...)
+    uses (...), libBinRes;
+    (...)
+    //something like "v1.0, rev.0 build 0"
+      ShowMessage(libBinRes.AppVersionInfo.VersionStrEx['v{mjr}.{mnr}, rev.{rev} build {bld}']);
+    (...)
+
+ 3. Accessing version numbers as integers:
+    (...)
+    uses (...), libBinRes;
+    (...)
+    var
+      minor,major,revision,build_no : integer;
+    (...)
+      major    := libBinRes.AppVersionInfo.Major;
+      minor    := libBinRes.AppVersionInfo.Minor;
+      revision := libBinRes.AppVersionInfo.Revision;
+      build_no := libBinRes.AppVersionInfo.BuildNo;
+    (...)
+
+ 4. About formatting
+    The VersionStrEx property can format the string with version numbers following
+    developer's liking. The Property takes a string as an argument, then substitutes:
+    - every "{mjr}" substring with a number of major version,
+    - every "{mnr}" substring with a number of minor version,
+    - every "{rev}" substring with a revision number,
+    - every "{bld}" substring with a build number
+    If the passed string is an empty string, then the default formatting will be
+    applied, as defined in the C_DEF_VER_FORMAT constant, which is used when calling
+    the VersionStr Property.
+
+ 5. Advanced
+    the libBinRes.AppVersionInfo is a function returning an instance of TAppVersionInfo class.
+    The instance is only being created at run-time when first accessed. Means, if you
+    do add libBinRes unit to your "uses" clause, but never actually call libBinRes.VersionInf,
+    then the instance will never be created.
+    The unit will automatically free the instance at the end of your program execution
+    (at unloading of the library, from "Finalize" section), if off course, there
+    is any instance to be freed.
+    Alternatively, you could choose to create your own instance of the TAppVersionInfo
+    class and call your object explicitely, then free it explicitely when no more needed.
+
+ ******************************************************************************}

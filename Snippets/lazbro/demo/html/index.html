@@ -1,0 +1,215 @@
+<HTML>
+<HEAD>
+<TITLE>Lazbro v0.4 - A Portable HTML Viewer for Lazarus</TITLE>
+</HEAD>
+<BODY bgcolor="#ddffaa" style="font-family:arial">
+<STYLE>
+.myform {
+  background-color:clBtnFace;
+  width: 80%;
+  padding: 20px;
+  _borderstyle:1;
+}
+
+.myformcol1 {
+  width: 20%;
+}
+
+.myformcol2 {
+  width: 80%;
+}
+
+.image {
+  margin: 10px;
+}
+</STYLE>
+
+<H1 style="text-align:center">Lazbro v0.4 - A Portable HTML Viewer for Lazarus</H1>
+<P style="text-align:center">Written by Derek John Evans<BR>
+<A target="_blank" href="http://www.wascal.net">http://www.wascal.net</A>
+</P>
+
+<HR>
+
+<P><A href="http://www.lazarus.freepascal.org/" target="_blank"><IMG title="Goto Lazarus Website" class=image src="img/powered_by_graphic.png" align=right></A>
+Lazbro is a simple HTML viewer for Lazarus. lazbro was written because I wasn't happy with the state of the TIpHTMLPanel control which comes
+with Lazarus, so as usual, if you don't like it, rewrite it.
+<BR>
+Lazbro is still young, so it will take a few months for all the bugs to be ironed out. Most of the core features are written. For the inner design,
+I choose to align the HTML attributes directly to Lazarus control properties. Which means there are a number of HTML attributes which are
+not standard. In order to provide the best compatiblity with standard HTML, I convert a subset of standard HTML attributes to the internal
+custom attributes. This makes for a clean/tidy implementation while providing a lot of extra layout features to get around compatiblity restrictions.
+<BR>
+Lazbro is still being developed, but the current version should be suitable for small to medium pages. Lazbro would currently suit
+basic HTML document reading, or dynamic FORM input for Lazarus programs.
+</P>
+
+<H3 style="text-align:center">HTML Form Input</H3>
+<FORM>
+<CENTER>
+  <INPUT type="hidden" name="hidden" value="hidden input">
+  <TABLE class=myform>
+    <TR><TH class=myformcol1>First Name:</TH><TD class=myformcol2><INPUT width="100%" name=name value="Enter Name"></TD></TR>
+    <TR><TH class=myformcol1>Surname:</TH><TD class=myformcol2><INPUT width="100%" name=surname value="Enter Surname"></TD></TR>
+    <TR><TH class=myformcol1>Address:</TH><TD class=myformcol2><INPUT width="100%" name=address value="Enter Address"></TD></TR>
+    <TR><TH class=myformcol1>Current Address:</TH><TD class=myformcol2><INPUT type=checkbox width="100%" name=current value=1></TD></TR>
+    <TR><TH class=myformcol1>Password:</TH><TD class=myformcol2><INPUT type=password width="100%" name=password></TD></TR>
+    <TR><TH class=myformcol1>Owns Car:</TH><TD class=myformcol2><INPUT type=checkbox width="100%" name=ownscar value=1></TD></TR>
+    <TR><TH class=myformcol1>Gender:</TH><TD class=myformcol2>
+      <SELECT width="100%" name=gender>
+        <OPTION>Male</OPTION>
+        <OPTION>Female</OPTION>
+        <OPTION selected=1>--SELECT--</OPTION>
+      </SELECT>
+    </TD></TR>
+    <TR><TH class=myformcol1>Country:</TH><TD class=myformcol2>
+      <SELECT width="100%" name=country multiple=1>
+        <OPTION>--SELECT--</OPTION>
+        <OPTION>Australia</OPTION>
+        <OPTION>America</OPTION>
+        <OPTION>England</OPTION>
+      </SELECT>
+    </TD></TR>
+  </TABLE>
+<P style=text-align:center><I>Note: There is no CGI linked to this form, so submitting will only send data back to Lazbro.</I></P>
+<P style=text-align:center><INPUT type="submit" name="submit" value="Submit Form"></P>
+</CENTER>
+</FORM>
+
+<H2 style="text-align:center">Standard Features</H2>
+
+<TABLE bgcolor="#ffffff" width="100%" _borderstyle="1" style=color:#008800>
+<TR><TD>Tables</TD><TD>Images</TD><TD>Text Styles</TD><TD>IFrames</TD></TR>
+<TR><TD>FORM Controls</TD><TD>Lists</TD><TD>Text Alignment</TD><TD>Basic CSS</TD></TR>
+</TABLE>
+
+<H2 style="text-align:center">Current Issues</H2>
+<P>
+There are some layout issues with more complex pages. This is pretty standard for HTML. I will fix the standard as I go. So far, I'm pretty
+happy with the results of the layout.
+</P>
+
+<H2 style="text-align:center">Completed v0.2 - v0.4 Features</H2>
+
+<CENTER>
+<TABLE width="90%" style="background-color:#ffffff" _borderstyle="1">
+<TR bgcolor=#aaaaff><TH width="20%">Title</TH><TH width="20%">Status</TH><TH width="60%">Features Notes</TH></TR>
+<TR><TH width="20%">Text Selection</TH><TD width="20%">Done</TD><TD width="60%">
+DONE - <I>Request: Text selection and clipboard copying will be in the next release.</I>
+</TD></TR>
+<TR><TH width="20%">HTTP Download</TH><TD width="20%">Done</TD><TD width="60%">
+<I>Currently only file access is implemented. HTTP downloading is simple to add, but that will be in the next release.</I>
+</TD></TR>
+<TR><TH width="20%">CGI Execute</TH><TD width="20%">Done</TD><TD width="60%">
+<I>The motivation for writing this component was because I wanted a server-free CGI control. I implemented a demo using TIpHtmlPanel, but
+the results were not to my likeing. Anyway, I still have the CGI code, which will be a standard feature for Lazbro.</I>
+</TD></TR>
+<TR><TH width="20%">Basic CSS Classes</TH><TD width="20%">Done</TD><TD width="60%">
+<I>The STYLE tag is currently not supported. Currently, I use custom tag attributes for styles, which are filled in via a compatiblity
+function. This allows me to keep the core browser code clean/simple, while implementing as many "HTML compatible" settings as possible.
+So, STYLE sheets can be implemented without messing with the core code. This will be done soon.</I>
+</TD></TR>
+</TABLE>
+</CENTER>
+
+<H2 style="text-align:center">Pending Features</H2>
+
+<CENTER>
+<TABLE width="90%" style="background-color:#ffffff" _borderstyle="1">
+<TR bgcolor=#aaaaff><TH width="20%">Title</TH><TH width="80%">Features Notes</TH></TR>
+<TR><TH width="20%">Advanced Styles</TH><TD width="80%">
+The color/font/background/border styles avalible are the ones which are in TPanel by default. I will be updating my flow panel
+at some stage to include more advanced styles which are avaliable in modern HTML.
+</TD></TR>
+<TR><TH width="20%">DHTML</TH><TD width="80%">
+Dynamic HTML is not support. ie: Modifing the THTMLDocument will not update the display. You may read from THTMLDocument. It is also
+not recommended to add your own controls to the browser control via coding. You can locate controls, and change their properties, or
+setup event notifications.
+</TD></TR>
+<TR><TH width="20%">JavaScript</TH><TD width="80%">
+Since I don't have a javascript interpreter, and DHTML is not supported, this feature is not done. When I do get DHTML working, I may
+add Pascal Script support, since its avaliable. So, you will be able to add dynamic changes, all be it, not in a standard way.
+</TD></TR>
+<TR><TH width="20%">Advanced TABLE Support</TH><TD width="80%">
+The currently TABLE implementation is very simple. There is no colspan support, or sibling width checks. So, each row must be
+setup with its own sizes (eg: This like this table). I will add better support soon.
+</TD></TR>
+</TABLE>
+</CENTER>
+
+<H2 style="text-align:center">Lazbro Examples</H2>
+
+<H3 style="text-align:center">Some Simple Link Tests</H3>
+<CENTER>
+<TABLE width=400>
+<TR><TD><A href="http://www.wascal.net/lazbro/index.html">Click here to view this page online</A></TD></TR>
+<TR><TD><A href="story.html">Click Here to View a Story...</A></TD></TR>
+<TR><TD><A href="broken.html">This is a Broken Link...</A></TD></TR>
+<TR><TD>This is a broken <IMG src=borken-image.jpg> image reference.</TD></TR>
+<TR><TD><A href="img/vitamins-crazy.jpg">This is a link to an image...</A></TD></TR>
+<TR><TH>CGI Execute (These wont work if CGI Unavaliable)</TH></TR>
+<TR><TD><A href="cgiapp1.cgi">This is a link a CGI app #1.</A></TD></TR>
+<TR><TD><A href="cgiapp2.cgi">This is a link a CGI app #2.</A></TD></TR>
+</TABLE>
+</CENTER>
+
+<H3 style="text-align:center">Text Formating</H3>
+<CENTER>
+<DIV style="width:60%;padding:10px;background-color:#ffffff" _borderstyle=1>
+<P>This text is aligned to the left.</P>
+<P style="text-align:right">This text is aligned to the right.</P>
+<P style="text-align:center">This text is aligned to the center.</P>
+<P style="text-align:center">This text is aligned to the <B>center</B> and contains some <I>basic text formating</I>.</P>
+<P style="text-align:center;font-family:verdana;font-size:20px">This is Verdana size 20px text.</P>
+<P style="color:#00ff00;background-color:#000000;text-align:center;font-family:terminal;font-size:16px">
+This is green terminal size 16px text with a black background.
+</P>
+</DIV>
+</CENTER>
+
+
+<H3 style="text-align:center">Basic Tables</H3>
+<CENTER>
+<TABLE width="80%" bgcolor="#ffffff" _borderstyle=1>
+<TR bgcolor="#cccccc"><TH>Name</TH><TH>Type</TH><TH>Size</TH><TH>Date</TH><TH>Location</TH></TR>
+<TR><TD>1</TD><TD>2</TD><TD>3</TD><TD>4</TD><TD>5</TD></TR>
+<TR><TD>1</TD><TD>2</TD><TD>3</TD><TD>4</TD><TD>5</TD></TR>
+<TR><TD>1</TD><TD>2</TD><TD>3</TD><TD>4</TD><TD>5</TD></TR>
+<TR><TD>1</TD><TD>2</TD><TD>3</TD><TD>4</TD><TD>5</TD></TR>
+</TABLE>
+</CENTER>
+
+<H3 style="text-align:center">External Images (in IFRAME)</H3>
+<CENTER><IFRAME width="80%" height=300 src="photos.html"></IFRAME></CENTER>
+
+<H3 style="text-align:center">Unsorted Lists</H3>
+<DIV _borderstyle=1 style=background-color:#eeeeff;padding:20px>
+<P><I>Note: Currently you must add your own list bullets via text or image.</I></P>
+<UL>
+  <LI><IMG src="img/arrow.png"> Level 1
+    <UL>
+      <LI><IMG src="img/arrow.png"> Level 2
+        <UL>
+          <LI><IMG src="img/arrow.png"> Level 3</li>
+          <LI><IMG src="img/arrow.png"> Level 3</LI>
+        </UL>
+      </LI>
+      <LI><IMG src="img/arrow.png"> Level 2</LI>
+    </UL>
+  </LI>
+  <LI><IMG src="img/arrow.png"> Level 1</LI>
+</UL>
+</DIV>
+
+<HR>
+
+<H2 style="text-align:center">Developer Contact Details</H2>
+
+<P>
+You can contact myself via my website.<BR><A target=_blank href="http://www.wascal.net">www.wascal.net</A>
+</P>
+
+</BODY>
+
+</HTML>
+

@@ -1,0 +1,8 @@
+    procedure Delay(dt: DWORD);
+    var
+      tc : DWORD;
+    begin
+      tc := GetTickCount;
+      while (GetTickCount < tc + dt) and (not Application.Terminated) do
+        Application.ProcessMessages;
+    end; 

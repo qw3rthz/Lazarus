@@ -1,0 +1,97 @@
+Código Delphi [-]
+
+Function ValidEmail(email: String): Boolean;
+  // Returns True if the email address is valid
+  // Author: Ernesto D'Spirito
+Const
+  // Valid characters in an "atom"
+  atom_chars = [#33..#255] - ['(', ')', '<', '>', '@', ',', ';', ':',
+    '\', '/', '"', '.', '[', ']', #127];
+  // Valid characters in a "quoted-string"
+  quoted_string_chars = [#0..#255] - ['"', #13, '\'];
+  // Valid characters in a subdomain
+  letters = ['A'..'Z', 'a'..'z'];
+  letters_digits = ['0'..'9', 'A'..'Z', 'a'..'z'];
+  subdomain_chars = ['-', '0'..'9', 'A'..'Z', 'a'..'z'];
+Type
+  States = (STATE_BEGIN, STATE_ATOM, STATE_QTEXT, STATE_QCHAR,
+    STATE_QUOTE, STATE_LOCAL_PERIOD, STATE_EXPECTING_SUBDOMAIN,
+    STATE_SUBDOMAIN, STATE_HYPHEN);
+Var
+  State: States;
+  i, n, subdomains: Integer;
+  c: Char;
+Begin
+  State := STATE_BEGIN;
+  n := Length(email);
+  i := 1;
+  subdomains := 1;
+  While (i <= n) Do
+  Begin
+    c := email[i];
+    Case State Of
+      STATE_BEGIN:
+        If c In atom_chars Then
+          State := STATE_ATOM
+        Else If c = '"' Then
+          State := STATE_QTEXT
+        Else
+          break;
+      STATE_ATOM:
+        If c = '@' Then
+          State := STATE_EXPECTING_SUBDOMAIN
+        Else If c = '.' Then
+          State := STATE_LOCAL_PERIOD
+        Else If Not (c In atom_chars) Then
+          break;
+      STATE_QTEXT:
+        If c = '\' Then
+          State := STATE_QCHAR
+        Else If c = '"' Then
+          State := STATE_QUOTE
+        Else If Not (c In quoted_string_chars) Then
+          break;
+      STATE_QCHAR:
+        State := STATE_QTEXT;
+      STATE_QUOTE:
+        If c = '@' Then
+          State := STATE_EXPECTING_SUBDOMAIN
+        Else If c = '.' Then
+          State := STATE_LOCAL_PERIOD
+        Else
+          break;
+      STATE_LOCAL_PERIOD:
+        If c In atom_chars Then
+          State := STATE_ATOM
+        Else If c = '"' Then
+          State := STATE_QTEXT
+        Else
+          break;
+      STATE_EXPECTING_SUBDOMAIN:
+        If c In letters Then
+          State := STATE_SUBDOMAIN
+        Else
+          break;
+      STATE_SUBDOMAIN:
+        If c = '.' Then
+        Begin
+          Inc(subdomains);
+          State := STATE_EXPECTING_SUBDOMAIN;
+        End
+        Else If c = '-' Then
+          State := STATE_HYPHEN
+        Else If Not (c In letters_digits) Then
+          break;
+      STATE_HYPHEN:
+        If c In letters_digits Then
+          State := STATE_SUBDOMAIN
+        Else If c <> '-' Then
+          break;
+    End;
+    Inc(i);
+  End;
+  If i <= n Then
+    Result := False
+  Else
+    Result := (State = STATE_SUBDOMAIN) And (subdomains >= 2);
+End;

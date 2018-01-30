@@ -1,0 +1,16 @@
+function CRC8 (data: pbyte; len: byte): byte;
+var n, crc, extract,tempI,sum : byte;
+begin
+  crc := 0;
+  for n := len downto 0 do begin
+    extract := data^;
+    inc (data);
+    for tempI := 8 downto 1 do begin
+      sum := (crc xor extract) and 1;
+      crc := crc shr 1;
+      if sum = 1 then crc := crc xor $8C;
+      extract := extract shr 1;
+    end;
+  end;
+  exit (crc);
+end;

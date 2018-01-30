@@ -1,0 +1,25 @@
+program sha1_on_file;
+ 
+uses
+   sha1;
+ 
+var
+  Hash : TSHA1Digest;
+  i    : integer;
+  S    : String;
+ 
+begin
+//Para un fichero
+  Hash := SHA1File('sha1_on_file.pas');
+  S := '';
+  for i := Low(Hash) to High(Hash) do
+    WriteStr(S, S, HexStr(Hash[i],2));
+  Writeln('the hash = ', S);
+  
+//Para un string
+  Hash := SHA1String('mystring');
+  S := '';
+  for i := Low(Hash) to High(Hash) do
+    WriteStr(S, S, HexStr(Hash[i],2)); 
+
+end.

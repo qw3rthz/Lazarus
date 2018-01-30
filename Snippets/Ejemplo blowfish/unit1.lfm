@@ -1,0 +1,58 @@
+object Form1: TForm1
+  Left = 433
+  Height = 402
+  Top = 206
+  Width = 639
+  Caption = 'Form1'
+  ClientHeight = 402
+  ClientWidth = 639
+  LCLVersion = '1.2.4.0'
+  object edCadena: TEdit
+    Left = 24
+    Height = 27
+    Top = 24
+    Width = 248
+    TabOrder = 0
+  end
+  object Button1: TButton
+    Left = 112
+    Height = 25
+    Top = 136
+    Width = 75
+    Caption = 'blowfish'
+    OnClick = Button1Click
+    TabOrder = 1
+  end
+  object Memo1: TMemo
+    Left = 13
+    Height = 226
+    Top = 168
+    Width = 619
+    TabOrder = 2
+  end
+  object lbl1: TLabel
+    Left = 24
+    Height = 15
+    Top = 8
+    Width = 97
+    Caption = 'Cadena a cifrar'
+    ParentColor = False
+  end
+  object Label1: TLabel
+    Left = 31
+    Height = 15
+    Top = 64
+    Width = 35
+    Caption = 'Clave'
+    ParentColor = False
+  end
+  object edClave: TEdit
+    Left = 24
+    Height = 27
+    Top = 80
+    Width = 248
+    EchoMode = emPassword
+    PasswordChar = '*'
+    TabOrder = 3
+  end
+end

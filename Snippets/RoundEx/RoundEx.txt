@@ -1,0 +1,19 @@
+http://www.askingbox.com/tutorial/delphi-lazarus-function-to-round-number-to-any-position-after-or-before-decimal-point
+
+
+function RoundEx(const AInput: extended; APlaces: integer): extended;
+var
+  k: extended;
+begin
+  if APlaces = 0 then begin
+    result := round(AInput);
+  end else begin  
+    if APlaces > 0 then begin
+      k := power(10, APlaces);
+      result := round(AInput * k) / k;
+    end else begin
+      k := power(10, (APlaces*-1));
+      result := round(AInput / k) * k;
+    end;
+  end;
+end;
